@@ -1,0 +1,24 @@
+<audio id="audio_s" src="audio_s.mp3"></audio>
+<audio id="audio_v" src="audio_v.mp3"></audio>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    let url = window.location.pathname; // Получаем путь из URL
+
+    if (url.includes("/s")) {
+        playAudio("audio_s");
+    } else if (url.includes("/v")) {
+        playAudio("audio_v");
+    }
+});
+
+function playAudio(audioId) {
+    let audio = document.getElementById(audioId);
+    if (audio) {
+        audio.volume = 1;
+        audio.play().catch(error => {
+            console.log("Ошибка воспроизведения:", error);
+        });
+    }
+}
+</script>
